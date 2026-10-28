@@ -43,9 +43,9 @@ footer { margin-top:3rem; color:var(--muted); font-size:0.8rem; border-top:1px s
 <table>
 <thead><tr><th>problem</th><th>what breaks</th><th>reports</th><th>tenants</th></tr></thead>
 <tbody>
-<tr><td><code>parser</code></td><td>shared parser reads day-first dates month first</td><td>374</td><td>11</td></tr>
+<tr><td><code>parser</code></td><td>shared parser reads day-first dates month first</td><td>379</td><td>11</td></tr>
 <tr><td><code>hint</code></td><td>booking-v3 form hint says MM/DD/YYYY, the form reads the tenant’s order</td><td>33</td><td>3</td></tr>
-<tr><td><code>one-day</code></td><td>date moves by one day, not a flip</td><td>5</td><td>5</td></tr>
+<tr><td><code>one-day</code></td><td>date moves by one day, not a flip (also counted under parser)</td><td>5</td><td>5</td></tr>
 </tbody>
 </table>
 <ul>
@@ -58,7 +58,7 @@ footer { margin-top:3rem; color:var(--muted); font-size:0.8rem; border-top:1px s
 <ul>
 <li>The desk merges on subject alone (<a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a>). Every subject in #4471 appears under more than one cause, so the rule merged them all.</li>
 <li>Intake tags are a guess from the reporter's browser. They disagree with the cause rules in both directions; the table on #4471 shows them.</li>
-<li>The one-day reports were counted under <code>parser</code> and footnoted. A footnote is not a ticket.</li>
+<li>The one-day reports are counted under <code>parser</code> and footnoted. The counts above keep them there, as the desk counts; a footnote is not a ticket, so they also have their own.</li>
 <li>The export holds duplicates from overlapping pages. Counts here are by unique report id.</li>
 </ul>
 <h2>As #4471 counts it</h2>

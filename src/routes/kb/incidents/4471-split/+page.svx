@@ -43,7 +43,8 @@ The report ids for each problem are in its ticket.
   Every subject in #4471 appears under more than one cause, so the rule merged them all.
 - Intake tags are a guess from the reporter's browser. They disagree with the cause rules in
   both directions; the table on #4471 shows them.
-- The one-day reports were counted under `parser` and footnoted. A footnote is not a ticket.
+- The one-day reports are counted under `parser` and footnoted. The counts above keep them
+  there, as the desk counts; a footnote is not a ticket, so they also have their own.
 - The export holds duplicates from overlapping pages. Counts here are by unique report id.
 
 ## As #4471 counts it
