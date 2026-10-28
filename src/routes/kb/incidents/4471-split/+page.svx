@@ -1,0 +1,58 @@
+---
+layout: runbook
+title: '#4471 · three problems, not one'
+owner: Monika Perendyk
+status: proposed
+reviewed: 2026-10-28
+signature: Monika Perendyk z harnessem Claude
+---
+
+<script>
+  import SplitTable from '#lib/kb/SplitTable.svelte';
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+[#4471](/kb/incidents/4471) says one bug with one fix queued. The reports say otherwise: three
+problems, three fixes. Each one now has a ticket of its own.
+
+<Callout kind="warn">
+The queued parser fix closes the first problem only. The other two stay open after it ships.
+</Callout>
+
+## What the reports show
+
+<SplitTable ticket={4471} />
+
+- **`parser`:** the shared parser reads every date month first. A day-first tenant's
+  7 April arrives as 4 July. Ticket: [parser reads day-first dates month first](TICKET_PARSER).
+- **`hint`:** booking-v3 prints `MM/DD/YYYY` under its date field. People type what the hint
+  says and the form reads it the tenant's way. The parser fix does not touch this.
+  Ticket: [booking-v3 date hint is month first](TICKET_HINT).
+- **`one-day`:** the date moves by one day, with no month and day swapped: Tuesday shows as
+  Monday, Lisbon and Toronto get different days for one meeting, an invite arrives before its
+  booking. This points at time zones, not at date order. Ticket:
+  [dates shift by one day](TICKET_ONEDAY).
+
+The report ids for each problem are in its ticket.
+
+## Why one ticket hid three
+
+- The desk merges on subject alone ([decision 0001](/kb/decisions/0001-dedupe-by-subject)).
+  Every subject in #4471 appears under more than one cause, so the rule merged them all.
+- Intake tags are a guess from the reporter's browser. They disagree with the cause rules in
+  both directions; the table on #4471 shows them.
+- The one-day reports were counted under `parser` and footnoted. A footnote is not a ticket.
+- The export holds duplicates from overlapping pages. Counts here are by unique report id.
+
+## As #4471 counts it
+
+<CauseTable ticket={4471} />
+
+## Next
+
+- Decision 0001 and the triage page were last reviewed in June 2024. Matching on subject is
+  what merged three causes; it needs a new decision record, not an edit.
+
+<RenderStamp {signature} />
