@@ -1,6 +1,6 @@
 ---
 layout: runbook
-title: '#4471 · three problems, not one'
+title: '#4471 · two problems, not one'
 owner: Monika Perendyk
 status: proposed
 reviewed: 2026-10-28
@@ -13,11 +13,11 @@ signature: v1.eyJzdWIiOiIyMTYyIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYX
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
 </script>
 
-[#4471](/kb/incidents/4471) says one bug with one fix queued. The reports say otherwise: three
-problems, three fixes. Each one now has a ticket of its own.
+[#4471](/kb/incidents/4471) says one bug with one fix queued. The reports say otherwise: two
+problems, two fixes. Each one now has a ticket of its own.
 
 <Callout kind="warn">
-The queued parser fix closes the first problem only. The other two stay open after it ships.
+The queued parser fix closes the first problem only. The other one stays open after it ships.
 </Callout>
 
 ## What the reports show
@@ -29,27 +29,24 @@ The queued parser fix closes the first problem only. The other two stay open aft
 - **`hint`:** booking-v3 prints `MM/DD/YYYY` under its date field. People type what the hint
   says and the form reads it the tenant's way. The parser fix does not touch this.
   Ticket: [booking-v3 date hint is month first](https://github.com/MonikaPerendyk/mega-s01e03-what-it-shows/issues/2).
-- **`one-day`:** the date moves by one day, with no month and day swapped: Tuesday shows as
-  Monday, Lisbon and Toronto get different days for one meeting, an invite arrives before its
-  booking. This points at time zones, not at date order. These are the one-day moves the table
-  footnotes under `parser`. Ticket:
-  [dates shift by one day](https://github.com/MonikaPerendyk/mega-s01e03-what-it-shows/issues/3).
+- Five reports the table footnotes as a one-day move stay under `parser`, as the desk files
+  them. Their dates move by one day rather than flip, so the parser ticket asks for a time-zone
+  check when the fix is verified.
 
 The report ids for each problem are in its ticket.
 
-## Why one ticket hid three
+## Why one ticket hid two
 
 - The desk merges on subject alone ([decision 0001](/kb/decisions/0001-dedupe-by-subject)).
   Every subject in #4471 appears under more than one cause, so the rule merged them all.
 - Intake tags are a guess from the reporter's browser. They disagree with the cause rules in
-  both directions; the table on #4471 shows them.
-- The one-day reports are counted under `parser` and footnoted. A footnote is not a ticket,
-  so they also have their own.
+  both directions; the table above shows them.
+- The one-day reports are counted under `parser` and footnoted; the parser ticket carries them.
 - The export holds duplicates from overlapping pages. The table counts by unique report id.
 
 ## Next
 
 - Decision 0001 and the triage page were last reviewed in June 2024. Matching on subject is
-  what merged three causes; it needs a new decision record, not an edit.
+  what merged two causes; it needs a new decision record, not an edit.
 
 <RenderStamp {signature} />
