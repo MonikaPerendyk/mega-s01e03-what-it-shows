@@ -4,7 +4,7 @@ title: '#4471 · three problems, not one'
 owner: Monika Perendyk
 status: proposed
 reviewed: 2026-10-28
-signature: Monika Perendyk z harnessem Claude
+signature: v1.eyJzdWIiOiIyMTYyIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyMTg4NDEsImV4cCI6MTc5MzMwNTI0MX0.Q4M70p_C1CB8oJfVrbgaQNJo6IahVQkH5fkG87q8BQk
 ---
 
 <script>
