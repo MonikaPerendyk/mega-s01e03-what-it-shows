@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>#4471 · two problems, not one · support kb</title>
+<title>#4471 · three problems, not one · support kb</title>
 <style>
 :root { --bg:#fbfaf7; --fg:#1d1d1b; --muted:#6b6a66; --line:#e3e0d8; --accent:#2f6f5e; --warn:#b4501f; --warn-bg:#fbeee6; --note-bg:#eef5f2; --mono: ui-monospace,'Cascadia Code',Menlo,monospace; }
 @media (prefers-color-scheme: dark) { :root { --bg:#171716; --fg:#ecebe6; --muted:#9c9a93; --line:#34332f; --accent:#6fbfa6; --warn:#f0905d; --warn-bg:#3a2418; --note-bg:#1d2c27; } }
@@ -32,12 +32,12 @@ footer { margin-top:3rem; color:var(--muted); font-size:0.8rem; border-top:1px s
 <div class="kb">
 <header>
 <a class="crumb" href="/kb">support desk · kb</a>
-<h1>#4471 · two problems, not one</h1>
+<h1>#4471 · three problems, not one</h1>
 <p class="meta"><span>owner <b>Monika Perendyk</b></span><span class="status proposed">proposed</span><span>reviewed 2026-10-28 · 0 days ago</span></p>
 </header>
 <main>
-<p><a href="/kb/incidents/4471">#4471</a> says one bug with one fix queued. The reports say otherwise: two problems, two fixes. Each one now has a ticket of its own.</p>
-<aside class="warn">The queued parser fix closes the first problem only. The other one stays open after it ships.</aside>
+<p><a href="/kb/incidents/4471">#4471</a> says one bug with one fix queued. The reports say otherwise: three problems, three fixes. Each one now has a ticket of its own.</p>
+<aside class="warn">The queued parser fix closes the first problem only. The other two stay open after it ships.</aside>
 <h2>What the reports show</h2>
 <p class="sum"><strong>412</strong> reports merged into #4471 · <strong>2</strong> causes</p>
 <table>
@@ -51,19 +51,19 @@ footer { margin-top:3rem; color:var(--muted); font-size:0.8rem; border-top:1px s
 <ul>
 <li><strong><code>parser</code>:</strong> the shared parser reads every date month first. A day-first tenant's 7 April arrives as 4 July. Ticket: <a href="https://github.com/MonikaPerendyk/mega-s01e03-what-it-shows/issues/1">parser reads day-first dates month first</a>.</li>
 <li><strong><code>hint</code>:</strong> booking-v3 prints <code>MM/DD/YYYY</code> under its date field. People type what the hint says and the form reads it the tenant's way. The parser fix does not touch this. Ticket: <a href="https://github.com/MonikaPerendyk/mega-s01e03-what-it-shows/issues/2">booking-v3 date hint is month first</a>.</li>
-<li>Five reports the table footnotes as a one-day move stay under <code>parser</code>, as the desk files them. Their dates move by one day rather than flip, so the parser ticket asks for a time-zone check when the fix is verified.</li>
+<li><strong><code>one-day</code>:</strong> the date moves by one day, with no month and day swapped: Tuesday shows as Monday, Lisbon and Toronto get different days for one meeting, an invite arrives before its booking. This points at time zones, not at date order. These are the one-day moves the table footnotes under <code>parser</code>. Ticket: <a href="https://github.com/MonikaPerendyk/mega-s01e03-what-it-shows/issues/4">dates shift by one day</a>.</li>
 </ul>
 <p>The report ids for each problem are in its ticket.</p>
-<h2>Why one ticket hid two</h2>
+<h2>Why one ticket hid three</h2>
 <ul>
 <li>The desk merges on subject alone (<a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a>). Every subject in #4471 appears under more than one cause, so the rule merged them all.</li>
 <li>Intake tags are a guess from the reporter's browser. They disagree with the cause rules in both directions; the table on #4471 shows them.</li>
-<li>The one-day reports are counted under <code>parser</code> and footnoted; the parser ticket carries them.</li>
+<li>The one-day reports are counted under <code>parser</code> and footnoted. A footnote is not a ticket, so they have their own, and the parser ticket does not count them.</li>
 <li>The export holds duplicates from overlapping pages. The table counts by unique report id.</li>
 </ul>
 <h2>Next</h2>
 <ul>
-<li>Decision 0001 and the triage page were last reviewed in June 2024. Matching on subject is what merged two causes; it needs a new decision record, not an edit.</li>
+<li>Decision 0001 and the triage page were last reviewed in June 2024. Matching on subject is what merged three causes; it needs a new decision record, not an edit.</li>
 </ul>
 <p class="stamp">desk ref <b>DR-VCCN-N0NP</b></p>
 </main>
