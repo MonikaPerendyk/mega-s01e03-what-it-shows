@@ -39,29 +39,6 @@ footer { margin-top:3rem; color:var(--muted); font-size:0.8rem; border-top:1px s
 <p><a href="/kb/incidents/4471">#4471</a> says one bug with one fix queued. The reports say otherwise: three problems, three fixes. Each one now has a ticket of its own.</p>
 <aside class="warn">The queued parser fix closes the first problem only. The other two stay open after it ships.</aside>
 <h2>What the reports show</h2>
-<p class="sum"><strong>412</strong> reports merged into #4471 · <strong>3</strong> problems</p>
-<table>
-<thead><tr><th>problem</th><th>what breaks</th><th>reports</th><th>tenants</th></tr></thead>
-<tbody>
-<tr><td><code>parser</code></td><td>shared parser reads day-first dates month first</td><td>379</td><td>11</td></tr>
-<tr><td><code>hint</code></td><td>booking-v3 form hint says MM/DD/YYYY, the form reads the tenant’s order</td><td>33</td><td>3</td></tr>
-<tr><td><code>one-day</code></td><td>date moves by one day, not a flip (also counted under parser)</td><td>5</td><td>5</td></tr>
-</tbody>
-</table>
-<ul>
-<li><strong><code>parser</code>:</strong> the shared parser reads every date month first. A day-first tenant's 7 April arrives as 4 July. Ticket: <a href="https://github.com/MonikaPerendyk/mega-s01e03-what-it-shows/issues/1">parser reads day-first dates month first</a>.</li>
-<li><strong><code>hint</code>:</strong> booking-v3 prints <code>MM/DD/YYYY</code> under its date field. People type what the hint says and the form reads it the tenant's way. The parser fix does not touch this. Ticket: <a href="https://github.com/MonikaPerendyk/mega-s01e03-what-it-shows/issues/2">booking-v3 date hint is month first</a>.</li>
-<li><strong><code>one-day</code>:</strong> the date moves by one day, with no month and day swapped: Tuesday shows as Monday, Lisbon and Toronto get different days for one meeting, an invite arrives before its booking. This points at time zones, not at date order. Ticket: <a href="https://github.com/MonikaPerendyk/mega-s01e03-what-it-shows/issues/3">dates shift by one day</a>.</li>
-</ul>
-<p>The report ids for each problem are in its ticket.</p>
-<h2>Why one ticket hid three</h2>
-<ul>
-<li>The desk merges on subject alone (<a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a>). Every subject in #4471 appears under more than one cause, so the rule merged them all.</li>
-<li>Intake tags are a guess from the reporter's browser. They disagree with the cause rules in both directions; the table on #4471 shows them.</li>
-<li>The one-day reports are counted under <code>parser</code> and footnoted. The counts above keep them there, as the desk counts; a footnote is not a ticket, so they also have their own.</li>
-<li>The export holds duplicates from overlapping pages. Counts here are by unique report id.</li>
-</ul>
-<h2>As #4471 counts it</h2>
 <p class="sum"><strong>412</strong> reports merged into #4471 · <strong>2</strong> causes</p>
 <table>
 <thead><tr><th>cause</th><th>reports</th><th>tagged as</th><th>tenants</th><th>seen</th><th></th></tr></thead>
@@ -71,6 +48,19 @@ footer { margin-top:3rem; color:var(--muted); font-size:0.8rem; border-top:1px s
 </tbody>
 </table>
 <p class="note">5 reports read as a one-day move; filed under <code>parser</code> by tenant.</p>
+<ul>
+<li><strong><code>parser</code>:</strong> the shared parser reads every date month first. A day-first tenant's 7 April arrives as 4 July. Ticket: <a href="https://github.com/MonikaPerendyk/mega-s01e03-what-it-shows/issues/1">parser reads day-first dates month first</a>.</li>
+<li><strong><code>hint</code>:</strong> booking-v3 prints <code>MM/DD/YYYY</code> under its date field. People type what the hint says and the form reads it the tenant's way. The parser fix does not touch this. Ticket: <a href="https://github.com/MonikaPerendyk/mega-s01e03-what-it-shows/issues/2">booking-v3 date hint is month first</a>.</li>
+<li><strong><code>one-day</code>:</strong> the date moves by one day, with no month and day swapped: Tuesday shows as Monday, Lisbon and Toronto get different days for one meeting, an invite arrives before its booking. This points at time zones, not at date order. These are the one-day moves the table footnotes under <code>parser</code>. Ticket: <a href="https://github.com/MonikaPerendyk/mega-s01e03-what-it-shows/issues/3">dates shift by one day</a>.</li>
+</ul>
+<p>The report ids for each problem are in its ticket.</p>
+<h2>Why one ticket hid three</h2>
+<ul>
+<li>The desk merges on subject alone (<a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a>). Every subject in #4471 appears under more than one cause, so the rule merged them all.</li>
+<li>Intake tags are a guess from the reporter's browser. They disagree with the cause rules in both directions; the table on #4471 shows them.</li>
+<li>The one-day reports are counted under <code>parser</code> and footnoted. A footnote is not a ticket, so they also have their own.</li>
+<li>The export holds duplicates from overlapping pages. The table counts by unique report id.</li>
+</ul>
 <h2>Next</h2>
 <ul>
 <li>Decision 0001 and the triage page were last reviewed in June 2024. Matching on subject is what merged three causes; it needs a new decision record, not an edit.</li>
